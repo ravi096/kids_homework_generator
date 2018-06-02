@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<title>Kindergarten Simple Math Sheet</title>
+<head>
+<style type="text/css">
+    .additions {
+        float: left;
+        width: 180px;
+        font-size: 25px;
+    }
+    .box {
+        margin: auto;
+        width: 75%;
+        height: auto;
+        //border: 3px solid green;
+        // padding: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="box">
+{% for _a in additions %}
+<div class="additions">{{_a[0]}} + {{_a[1]}} = </div>
+{% endfor %}
+</div>
+</body>
+</html>
