@@ -1,27 +1,51 @@
 <!doctype html>
 <html>
-<title>Kindergarten Simple Math Sheet</title>
+<title>{{title}}</title>
 <head>
 <style type="text/css">
+
+    .box {
+        height: 842px;
+        width: 595px;
+        /* to centre page on screen*/
+        margin-left: auto;
+        margin-right: auto;
+    }
     .additions {
         float: left;
-        width: 180px;
-        font-size: 25px;
+        width: 30px;
+        height: 80px;
+        //border: 1px solid red;
+        padding: 1%;
     }
-    .box {
+    .number {
         margin: auto;
-        width: 75%;
-        height: auto;
-        //border: 3px solid green;
-        // padding: 10px;
+        width: 30px;
+        height: 20px;
+        font-size: 15px;
+        text-align: right;
     }
+    .line {
+        margin: auto;
+        width: 30px;
+        height: 20px;
+        text-align: right;
+    }
+
 </style>
 </head>
 <body>
+    <h1 align="center">{{title}}</h1>
 <div class="box">
 {% for _a in additions %}
-<div class="additions">{{_a[0]}} + {{_a[1]}} = </div>
+<div class="additions">
+    <div class="number">{{_a[0]}}</div>
+    <div class="number">+ {{_a[1]}}</div>
+    <div class="line">-----</div>
+    <div class="line">-----</div>
+</div>
 {% endfor %}
 </div>
 </body>
 </html>
+
