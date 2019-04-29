@@ -1,0 +1,101 @@
+<html>
+<head>
+    <style>
+        .body {
+            background-color: white;
+        }
+
+        .container {
+            display: grid;
+            height: 100vh;
+            widows: 100vw;
+        }
+        .centerbox {
+            justify-self: center;
+            align-self: center;
+
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-gap: 5px;
+        }
+
+        .text {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-gap: 4px;
+            // border: 1px solid black;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+            padding: 10px;
+            // border: 1px solid black;
+
+        }
+
+        .text > div {
+            font-size: 3em;
+            padding: 5px;
+        }
+
+        .next {
+            align-self:stretch;
+        }
+
+        .answer {
+            align-self:stretch;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="centerbox">
+            <div class="text">
+                <div v-for="n in numbers">{{n}}</div>
+            </div>
+            <div class="controls">
+                <button class="next">Next</button>
+                <button class="answer" v-on:click="getNextVal">NextVal</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+    <script>
+    
+        new Vue({
+            el: "#app",
+            data: {
+                numbers: [1],
+                factor: 0
+            },
+
+            methods: {
+                getNextVal: function() {
+                    if (this.numbers.length > 9) {
+                        this.numbers.shift();
+                    }
+                    this.numbers.push(this.arithmeticSequece(this.factor));
+                },
+
+                genRandom: function() {
+                    var min = 1;
+                    var max = 10;
+                    return Math.floor((Math.random() * (max - min)) + min);
+                },
+
+                arithmeticSequece: function(factor) {
+                    return this.numbers[this.numbers.length - 1] + factor;
+                }
+            },
+            created() {
+                var min = 1;
+                var max = 20;  
+                this.factor = Math.floor((Math.random() * (max - min)) + min);
+            }
+        })
+    </script>
+</body>
+</html>
